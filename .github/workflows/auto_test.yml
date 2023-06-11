@@ -23,9 +23,17 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
       # Install dependencie using the runners shell
       - name: Install dependencies
         run: npm install
+
+      - name: Install peer dependencies
+        run: npx npm-install-peers
 
       # Runs test using the runners shell
       - name: Test
