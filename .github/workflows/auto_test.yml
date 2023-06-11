@@ -1,40 +1,25 @@
 name: Tests
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: [ main ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      # Install dependencie using the runners shell
-      - name: Install dependencies
-        run: npm install
-
-      - name: Install peer dependencies
-        run: npx npm-install-peers
-
-      # Runs test using the runners shell
-      - name: Test
-        run: npm run test
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run build
+      - run: pnpm test
