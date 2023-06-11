@@ -1,0 +1,6 @@
+{
+  "form.label": "ULID",
+  "form.description": "Generates ULID",
+  "form.field.generate": "Generate",
+  "form.field.error": "The ULID format is invalid."
+}
