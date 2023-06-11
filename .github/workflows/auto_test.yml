@@ -31,6 +31,8 @@ jobs:
       # Install dependencie using the runners shell
       - name: Install dependencies
         run: npm install
+
+      - name: Install @strapi/strapi
         run: npm install @strapi/strapi
 
       # Runs test using the runners shell
