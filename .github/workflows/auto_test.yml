@@ -30,10 +30,10 @@ jobs:
 
       # Install dependencie using the runners shell
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Install @strapi/strapi
-        run: npm install @strapi/strapi
+      - name: Install peer dependencies
+        run: npx npm-install-peers
 
       # Runs test using the runners shell
       - name: Test
