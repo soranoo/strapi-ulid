@@ -1,6 +1,6 @@
 {
   "name": "strapi-ulid",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "This plugin adds support for ULID field type to Strapi as a Custom field.",
   "keywords": [
     "strapi",
@@ -40,7 +40,7 @@
   "peerDependencies": {
     "@strapi/strapi": "^4.9.2",
     "react": "^18.2.0",
-    "react-dom": "^^18.2.0",
+    "react-dom": "^18.2.0",
     "styled-components": "^5.3.10"
   },
   "homepage": "https://github.com/soranoo/strapi-ulid",
