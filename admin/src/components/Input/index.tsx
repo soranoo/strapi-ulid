@@ -95,6 +95,7 @@ const Input = ({
             endAction={
               <FieldActionWrapper
                 onClick={() => {
+                  if (disabled) return
                   const newULID = ulid()
                   onChange({ target: { value: newULID, name }})
                 }}
