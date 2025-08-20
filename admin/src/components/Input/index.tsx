@@ -86,25 +86,29 @@ const Input = ({
           <FieldInput
             onChange={onChange}
             labelAction={labelAction}
-            placeholder={placeholder}
+            placeholder={placeholder && formatMessage(placeholder)}
             disabled={disabled}
             required
             value={initialValue}
             ref={ref}
             readOnly
             endAction={
-              <FieldActionWrapper
-                onClick={() => {
-                  const newULID = ulid()
-                  onChange({ target: { value: newULID, name }})
-                }}
-                label={formatMessage({
-                  id: 'ulid.form.field.generate',
-                  defaultMessage: 'Generate',
-                })}
-              >
-                <Refresh />
-              </FieldActionWrapper>
+              <>
+                {!disabled && (
+                  <FieldActionWrapper
+                    onClick={() => {
+                      const newULID = ulid()
+                      onChange({ target: { value: newULID, name }})
+                    }}
+                    label={formatMessage({
+                      id: 'ulid.form.field.generate',
+                      defaultMessage: 'Generate',
+                    })}
+                    >
+                    <Refresh />
+                  </FieldActionWrapper>
+                )}
+              </>
             }
           />
           <FieldHint />
